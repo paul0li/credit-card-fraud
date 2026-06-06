@@ -1,0 +1,9 @@
+[project]
+name = "credit-card-fraud"
+version = "0.1.0"
+description = "Predicting Credit Card Fraud"
+requires-python = ">=3.13"
+dependencies = [
+    "ipykernel>=7.2.0",
+    "kagglehub[pandas-datasets]>=1.0.1",
+]
