@@ -12,10 +12,12 @@ The dataset can be found in this URL: [https://www.kaggle.com/datasets/kartik211
 **Setup**
 
 1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
-2. Set up Kaggle credentials (see `.env.example`):
+2. Configura las credenciales de Kaggle (ver `.env.example`):
+   - Ve a https://www.kaggle.com/settings/api → "Create New Token" → descarga `kaggle.json`.
+   - Copia el archivo de ejemplo y completa con los valores de `kaggle.json`:
 ```bash
 cp .env.example .env
-# Edit .env with your Kaggle username and API key from kaggle.json
+# Edita .env con tu KAGGLE_USERNAME y KAGGLE_KEY de kaggle.json
 ```
 3. Create the virtual environment:
 ```bash
