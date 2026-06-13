@@ -23,5 +23,5 @@ uv sync
 ```
 4. Open `analysis.ipynb` in VS Code and select the `.venv` interpreter, or run:
 ```bash
-uv run jupyter notebook analysis.ipynb
+uv run analysis.py
 ```
