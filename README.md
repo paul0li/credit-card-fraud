@@ -1,17 +1,17 @@
-**Problem**
+**Problema**
 
-It is important that credit card companies are able to recognize fraudulent credit card transactions so that customers are not charged for items that they did not purchase.
+Es importante que las empresas de tarjetas de crédito puedan reconocer transacciones fraudulentas, para que los clientes no sean cobrados por artículos que no compraron.
 
 
-**About the Dataset**
+**Sobre el dataset**
 
-This is a simulated credit card transaction dataset containing legitimate and fraud transactions from the duration 1st Jan 2019 - 31st Dec 2020. It covers credit cards of 1000 customers doing transactions with a pool of 800 merchants.
+Este es un dataset simulado de transacciones con tarjeta de crédito, con transacciones legítimas y fraudulentas entre el 1 de enero de 2019 y el 31 de diciembre de 2020. Cubre tarjetas de crédito de 1000 clientes haciendo transacciones con un conjunto de 800 comercios.
 
-The dataset can be found in this URL: [https://www.kaggle.com/datasets/kartik2112/fraud-detection](https://www.kaggle.com/datasets/kartik2112/fraud-detection)
+El dataset se encuentra en esta URL: [https://www.kaggle.com/datasets/kartik2112/fraud-detection](https://www.kaggle.com/datasets/kartik2112/fraud-detection)
 
-**Setup**
+**Configuración**
 
-1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. Instala [uv](https://docs.astral.sh/uv/getting-started/installation/)
 2. Configura las credenciales de Kaggle (ver `.env.example`):
    - Ve a https://www.kaggle.com/settings/api → "Create New Token" → descarga `kaggle.json`.
    - Copia el archivo de ejemplo y completa con los valores de `kaggle.json`:
@@ -19,11 +19,11 @@ The dataset can be found in this URL: [https://www.kaggle.com/datasets/kartik211
 cp .env.example .env
 # Edita .env con tu KAGGLE_USERNAME y KAGGLE_KEY de kaggle.json
 ```
-3. Create the virtual environment:
+3. Crea el entorno virtual:
 ```bash
 uv sync
 ```
-4. Run the EDA:
+4. Ejecuta el EDA:
 ```bash
 uv run analysis.py
 ```
@@ -35,6 +35,8 @@ Pipeline en 3 pasos:
 1. `uv run analysis.py` — EDA completo, gráficos y conclusiones en `eda_output/`.
 2. `uv run clean_data.py` — selecciona columnas relevantes (`amt`, `trans_hour`, `age`, `category` en one-hot, `is_fraud`) y guarda `data/fraud_clean.csv`.
 3. `uv run split_data.py` — divide en train/test y genera un train balanceado.
+
+Los archivos generados (`data/`) no están en el repo — también se pueden descargar directo desde [Google Drive](https://drive.google.com/drive/folders/1a0cQr3LnwNbEhUXJPvkRwEby5c0SSyal?usp=drive_link).
 
 ### División train/test
 
