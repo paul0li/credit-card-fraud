@@ -15,7 +15,6 @@ import kagglehub
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from kagglehub import KaggleDatasetAdapter
 
 OUTPUT_DIR = "eda_output"
 
@@ -50,12 +49,9 @@ COLUMN_DESCRIPTIONS = {
 
 
 def load_data() -> pd.DataFrame:
-    df = kagglehub.dataset_load(
-        KaggleDatasetAdapter.PANDAS,
-        "kartik2112/fraud-detection",
-        "fraudTrain.csv",
-    )
-    return df
+    path = kagglehub.dataset_download("kartik2112/fraud-detection")
+    csv_path = os.path.join(path, "fraudTrain.csv")
+    return pd.read_csv(csv_path, encoding="latin-1")
 
 
 def add_derived_columns(df: pd.DataFrame) -> pd.DataFrame:
