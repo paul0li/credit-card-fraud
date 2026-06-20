@@ -30,12 +30,13 @@ uv run analysis.py
 
 ## Preparación de datos
 
-Pipeline en 4 pasos:
+Pipeline en 5 pasos:
 
 1. `uv run analysis.py` — EDA completo, gráficos y conclusiones en `eda_output/`.
 2. `uv run clean_data.py` — selecciona columnas relevantes (`amt`, `trans_hour`, `age`, `category` en one-hot, `is_fraud`) y guarda `data/fraud_clean.csv`.
 3. `uv run split_data.py` — divide en train/test y genera un train balanceado.
 4. `uv run preprocess.py` — escala las features y guarda los conjuntos listos para modelar.
+5. `uv run train_models.py` — entrena y compara modelos, guarda métricas, una ROC comparativa y matrices de confusión en `model_output/`.
 
 Los archivos generados (`data/`) no están en el repo — también se pueden descargar directo desde [Google Drive](https://drive.google.com/drive/folders/1a0cQr3LnwNbEhUXJPvkRwEby5c0SSyal?usp=drive_link).
 
@@ -64,6 +65,29 @@ Toma `train_balanced.csv` y `test.csv` y aplica:
 | `category_*` | Sin cambios | Ya en one-hot binario desde `clean_data.py` |
 
 El `StandardScaler` se ajusta **solo en train** y se aplica a test, evitando data leakage. El scaler se guarda en `data/scaler.joblib` para reutilizarlo en inferencia.
+
+### Entrenamiento y evaluación (`train_models.py`)
+
+Toma `data/train_preprocessed.csv` y `data/test_preprocessed.csv`, entrena tres modelos candidatos y compara sus resultados:
+
+- `LogisticRegression`
+- `RandomForestClassifier`
+- `HistGradientBoostingClassifier`
+
+Genera:
+
+- `model_output/model_comparison.csv`
+- `model_output/roc_curves.png`
+- `model_output/confusion_matrix_*.png`
+- `model_output/best_model.joblib`
+
+La métrica principal es `average_precision` (PR-AUC), porque el problema está fuertemente desbalanceado.
+
+Uso:
+
+```bash
+uv run train_models.py
+```
 
 ### Manejo del desbalance de clases
 
