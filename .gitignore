@@ -2,3 +2,5 @@
 .venv/
 __pycache__/
 data/
+fraudTrain.csv
+.ipynb_checkpoints/
